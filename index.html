@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Cheap Buried and That Sudden Numbing Tragedy Glee Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #001122 0%, #003366 50%, #001122 100%);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid #4a90e2;
+        }
+
+        .band-name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #e8f4fd;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b3d9ff;
+            font-style: italic;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #4a90e2;
+            border-color: white;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+        }
+
+        .section h2 {
+            color: #4a90e2;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Music Player Styles */
+        .music-player {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .track-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .track-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .track-item:hover {
+            background: rgba(74, 144, 226, 0.2);
+            border-color: #4a90e2;
+        }
+
+        .track-info {
+            flex-grow: 1;
+        }
+
+        .track-title {
+            font-weight: bold;
+            color: #e8f4fd;
+            margin-bottom: 0.25rem;
+        }
+
+        .track-duration {
+            color: #b3d9ff;
+            font-size: 0.9rem;
+        }
+
+        .play-btn {
+            background: #4a90e2;
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .play-btn:hover {
+            background: #357abd;
+            transform: scale(1.05);
+        }
+
+        .play-btn.playing {
+            background: #ff4757;
+        }
+
+        .now-playing {
+            background: rgba(74, 144, 226, 0.3);
+            border-color: #4a90e2;
+        }
+
+        /* Layout Styles */
+        .music-photos-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .music-section h2,
+        .photos-section h2 {
+            color: #4a90e2;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: #4a90e2;
+        }
+
+        .photo-placeholder, .video-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%),
+                        linear-gradient(45deg, #333 25%, #1a1a1a 25%, #1a1a1a 75%, #333 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a90e2;
+            font-size: 3rem;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e8f4fd;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 3px solid #4a90e2;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #4a90e2;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem;
+            border: 1px solid #4a90e2;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #4a90e2;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .band-name {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.25rem 0;
+            }
+            
+            .music-photos-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .track-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="band-name">Chuck Cheap Buried</h1>
+            <p class="subtitle">and That Sudden Numbing Tragedy Glee Club</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#photos">Photos</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="section">
+            <div class="music-photos-container">
+                <div id="music" class="music-section">
+                    <h2>Our Music</h2>
+                    <div class="music-player">
+                        <div class="track-list">
+                            <div class="track-item" data-track="1">
+                                <div class="track-info">
+                                    <div class="track-title">Midnight Revelations</div>
+                                    <div class="track-duration">3:47</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(1)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="2">
+                                <div class="track-info">
+                                    <div class="track-title">Echoes in the Void</div>
+                                    <div class="track-duration">4:23</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(2)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="3">
+                                <div class="track-info">
+                                    <div class="track-title">Suburban Ghosts</div>
+                                    <div class="track-duration">2:56</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(3)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="4">
+                                <div class="track-info">
+                                    <div class="track-title">Digital Silence</div>
+                                    <div class="track-duration">5:12</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(4)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="5">
+                                <div class="track-info">
+                                    <div class="track-title">Neon Dreams</div>
+                                    <div class="track-duration">3:38</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(5)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="6">
+                                <div class="track-info">
+                                    <div class="track-title">Concrete Jungle Blues</div>
+                                    <div class="track-duration">4:01</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(6)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="7">
+                                <div class="track-info">
+                                    <div class="track-title">Tomorrow's Yesterday</div>
+                                    <div class="track-duration">3:29</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(7)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="8">
+                                <div class="track-info">
+                                    <div class="track-title">Static Hearts</div>
+                                    <div class="track-duration">4:44</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(8)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="9">
+                                <div class="track-info">
+                                    <div class="track-title">Fractured Light</div>
+                                    <div class="track-duration">3:15</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(9)">Play</button>
+                            </div>
+                            <div class="track-item" data-track="10">
+                                <div class="track-info">
+                                    <div class="track-title">The Last Station</div>
+                                    <div class="track-duration">6:33</div>
+                                </div>
+                                <button class="play-btn" onclick="togglePlay(10)">Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="photos" class="photos-section">
+                    <h2>Photo Gallery</h2>
+                    <div class="photo-grid">
+                        <div class="gallery-item">
+                            <div class="photo-placeholder">📸</div>
+                            <div class="gallery-caption">Live at The Underground - 2024</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="photo-placeholder">📸</div>
+                            <div class="gallery-caption">Studio Sessions</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="photo-placeholder">📸</div>
+                            <div class="gallery-caption">Band Portrait</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="photo-placeholder">📸</div>
+                            <div class="gallery-caption">Behind the Scenes</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="photo-placeholder">📸</div>
+                            <div class="gallery-caption">Summer Festival 2024</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="photo-placeholder">📸</div>
+                            <div class="gallery-caption">Acoustic Set</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" class="section">
+            <h2>Videos</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div class="video-placeholder">▶️</div>
+                    <div class="gallery-caption">"Midnight Revelations" Music Video</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="video-placeholder">▶️</div>
+                    <div class="gallery-caption">Live Performance Highlights</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="video-placeholder">▶️</div>
+                    <div class="gallery-caption">Studio Documentary</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="video-placeholder">▶️</div>
+                    <div class="gallery-caption">"Digital Silence" Official Video</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2>About the Band</h2>
+            <div class="about-text">
+                <p>Chuck Cheap Buried and That Sudden Numbing Tragedy Glee Club emerged from the underground music scene with a sound that defies conventional categorization. Blending elements of alternative rock, ambient soundscapes, and experimental compositions, the band has carved out a unique niche in the contemporary music landscape.</p>
+                
+                <p>Formed in 2019, the group consists of talented musicians who share a passion for pushing musical boundaries and exploring themes of modern alienation, digital disconnection, and the search for authentic human connection in an increasingly artificial world.</p>
+                
+                <p>Their latest album features introspective lyrics paired with innovative instrumentation, creating an immersive listening experience that resonates with audiences seeking depth and meaning in their musical journey. From intimate acoustic moments to powerful full-band arrangements, their versatility shines through every performance.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>Connect With Us</h3>
+            <div class="social-links">
+                <a href="#">Spotify</a>
+                <a href="#">Bandcamp</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <a href="#">Contact</a>
+            </div>
+            <p>&copy; 2024 Chuck Cheap Buried and That Sudden Numbing Tragedy Glee Club. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentlyPlaying = null;
+
+        function togglePlay(trackNumber) {
+            const trackItem = document.querySelector(`[data-track="${trackNumber}"]`);
+            const playBtn = trackItem.querySelector('.play-btn');
+            
+            // Stop currently playing track
+            if (currentlyPlaying && currentlyPlaying !== trackNumber) {
+                const currentTrack = document.querySelector(`[data-track="${currentlyPlaying}"]`);
+                const currentBtn = currentTrack.querySelector('.play-btn');
+                currentBtn.textContent = 'Play';
+                currentBtn.classList.remove('playing');
+                currentTrack.classList.remove('now-playing');
+            }
+            
+            // Toggle current track
+            if (currentlyPlaying === trackNumber) {
+                playBtn.textContent = 'Play';
+                playBtn.classList.remove('playing');
+                trackItem.classList.remove('now-playing');
+                currentlyPlaying = null;
+            } else {
+                playBtn.textContent = 'Pause';
+                playBtn.classList.add('playing');
+                trackItem.classList.add('now-playing');
+                currentlyPlaying = trackNumber;
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
